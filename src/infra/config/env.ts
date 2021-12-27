@@ -10,4 +10,5 @@ export default {
   db_pass: process.env.DB_PASS,
   db_name: process.env.DB_NAME,
   env_name: process.env.ENV_NAME,
+  product_api: process.env.PRODUCT_API,
 };

@@ -1,4 +1,12 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import CustomerEntity from "./CustomerEntity";
 import WishlistItemEntity from "./WishlistItemEntity";
 
 @Entity("wishlist")
@@ -28,6 +36,10 @@ class WishlistEntity {
     onUpdate: "CASCADE",
   })
   items: WishlistItemEntity[];
+
+  @OneToOne(() => CustomerEntity, (order) => order.wishlist, { nullable: false })
+  @JoinColumn({ name: "customer_id" })
+  customer: CustomerEntity;
 }
 
 export default WishlistEntity;
