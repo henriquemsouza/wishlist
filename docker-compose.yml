@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:11.4
+    ports: 
+      - 5432:5432
+    hostname: postgres
+    environment:
+      POSTGRES_DB: wish_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+     - postgres:/var/lib/postgresql/data
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: wishlist-serverless
+    env_file:
+      - .env
+    working_dir: $PWD
+    command: ./scripts/start.sh
+    network_mode: host
+    depends_on:
+      - db
+    volumes:
+      - $PWD:$PWD
+
+volumes:
+  postgres:
+  .volumes:
