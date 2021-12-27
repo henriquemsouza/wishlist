@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+*.zip
+.env
+.build
+coverage/
+.nyc_output/
+
+.volumes/
+
+yarn-error.log
+
+build
