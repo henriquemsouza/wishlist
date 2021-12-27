@@ -1,6 +1,6 @@
 import { Container } from "inversify";
+import CustomerContainer from "../../modules/Customer/CustomerContainer";
 
-import RandomSampleContainer from "../../modules/RandomSample/RandomSampleContainer";
 import WishlistContainer from "../../modules/Wishlist/WishlistContainer";
 import ProductService from "../../services/product/productService";
 import { Newable } from "../../shared/types";
@@ -11,7 +11,7 @@ const container = new Container({ defaultScope: "Singleton" });
 container.bind<AxiosHttpHandle>(AxiosHttpHandle).toSelf();
 container.bind<ProductService>(ProductService).toSelf();
 
-container.load(RandomSampleContainer);
+container.load(CustomerContainer);
 container.load(WishlistContainer);
 
 export default container;

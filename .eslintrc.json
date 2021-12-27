@@ -20,6 +20,7 @@
         "camelcase": "off",
         "dot-notation": "off",
         "no-useless-constructor": "off",
-        "no-unused-expressions": "off"
+        "no-unused-expressions": "off",
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }

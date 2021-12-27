@@ -1,12 +1,11 @@
-import { Router } from 'express';
+import { Router } from "express";
+import CustomerRoutes from "./Customer/CustomerRoutes";
 
-import RandomSampleRoutes from './RandomSample/RandomSampleRoutes';
-import WishlistRoutes from './Wishlist/WishlistRoutes';
+import WishlistRoutes from "./Wishlist/WishlistRoutes";
 
 const Routes = Router();
 
-Routes.use('/sample', RandomSampleRoutes);
-Routes.use('/wishlist', WishlistRoutes);
-
+Routes.use("/customer", CustomerRoutes);
+Routes.use("/wishlist", WishlistRoutes);
 
 export default Routes;

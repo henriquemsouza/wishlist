@@ -1,10 +1,11 @@
 import {
-  Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from "typeorm";
 import CustomerEntity from "./CustomerEntity";
 import WishlistItemEntity from "./WishlistItemEntity";
@@ -14,21 +15,11 @@ class WishlistEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  price: number;
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @Column()
-  image: string;
-
-  @Column()
-  brand: string;
-
-  @Column()
-  // tslint:disable-next-line: variable-name
-  product_id: string;
-
-  @Column()
-  title: string;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @OneToMany(() => WishlistItemEntity, (item) => item.wishlist, {
     cascade: true,
@@ -37,7 +28,9 @@ class WishlistEntity {
   })
   items: WishlistItemEntity[];
 
-  @OneToOne(() => CustomerEntity, (order) => order.wishlist, { nullable: false })
+  @OneToOne(() => CustomerEntity, (order) => order.wishlist, {
+    nullable: false,
+  })
   @JoinColumn({ name: "customer_id" })
   customer: CustomerEntity;
 }

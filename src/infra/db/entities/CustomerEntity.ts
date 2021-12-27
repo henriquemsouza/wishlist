@@ -5,6 +5,7 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from "typeorm";
 import WishlistEntity from "./WishlistEntity";
 
@@ -21,6 +22,9 @@ class CustomerEntity {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @ManyToOne(() => WishlistEntity, { nullable: true, onDelete: "CASCADE" })
   @JoinColumn({ name: "wishlist_id" })
