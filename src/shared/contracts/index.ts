@@ -12,6 +12,10 @@ export interface UseCaseParams<H = any, B = any, Q = any> {
   query?: Q;
 }
 
+export interface GenericUseCase {
+  execute(id: string): Promise<HttpResponse<any>>;
+}
+
 export interface UseCase {
   execute({ headers, body }: UseCaseParams): Promise<HttpResponse<any>>;
 }

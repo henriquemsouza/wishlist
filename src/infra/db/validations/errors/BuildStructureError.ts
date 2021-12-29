@@ -2,7 +2,7 @@ import { ValidationError } from "class-validator";
 import StructureErrorDetail from "./structureError/StructureErrorDetail";
 import { StructureErrorDetailType } from "./structureError/StructureErrorDetailType";
 
-export default class BuildStrucutureError {
+export default class BuildStructureError {
   public run(errors: ValidationError[]): StructureErrorDetail[] {
     return errors.reduce(
       (prev: StructureErrorDetail[], cur: ValidationError) => [
@@ -16,6 +16,7 @@ export default class BuildStrucutureError {
 
   private mapChildren(error: ValidationError): StructureErrorDetail[] {
     const errorDetails: StructureErrorDetail[] = [];
+    // tslint:disable-next-line: no-unused-expression
     error.children &&
       error.children.map((cur) =>
         cur.children.length
