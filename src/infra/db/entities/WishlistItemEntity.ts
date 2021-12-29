@@ -12,8 +12,8 @@ class WishlistItemEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  price: number;
+  @Column({type: 'real'})
+  price: string;
 
   @Column()
   image: string;
