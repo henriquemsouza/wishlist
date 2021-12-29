@@ -36,7 +36,7 @@ export default class CreateWishlistItemCase implements UseCase {
     const wishlist = await this.findWishList(customer_id);
 
     if (!wishlist) {
-      throw new Error("Not found");
+      throw new Error("Wishlist Not found");
     }
 
     const wishlistItem = await this.saveItem(product_id, product, wishlist);

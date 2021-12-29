@@ -42,18 +42,20 @@ export default class DeleteCustomerCase implements GenericUseCase {
 
     const wishRepository = getTypeORMConnection().getRepository(WishlistEntity);
 
-    const customers = await ormRepository.findOne({
+    const customer = await ormRepository.findOne({
       where: {
         id,
       },
       relations: ["wishlist"],
     });
 
-    if (!customers) {
+    if (!customer) {
       throw new Error("No Customer were found");
     }
 
-    wishRepository.delete(customers.wishlist.id);
+    if (customer.wishlist) {
+      wishRepository.delete(customer.wishlist.id);
+    }
 
     const result = await ormRepository.delete(id);
     return result;

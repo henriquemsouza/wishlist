@@ -73,8 +73,5 @@ export default class CreateCustomerCase implements UseCase {
       wishlist,
     });
     return customer;
-
-    // const result = await ormRepository.findOne({ id: customer.id });
-    // return result;
   }
 }

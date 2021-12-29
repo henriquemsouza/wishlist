@@ -1,10 +1,13 @@
-export interface  UpdateCustomerBody {
+export interface UpdateCustomerBody {
   name: string;
   email: string;
   id: string;
 }
 
-
 export interface UpdateCustomerResponse {
-  [k: string]: any;
+  id: number;
+  name: string;
+  email: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
