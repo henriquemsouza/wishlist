@@ -252,10 +252,44 @@
         }
       }
     },
-    "v1/wishlist/create": {
-      "post": {
-        "tags": ["Create wishlist"],
-        "summary": "Create wishlist"
+    "v1/wishlist/delete/item": {
+      "delete": {
+        "tags": ["Delete wishlist item"],
+        "summary": "Delete wishlist item",
+        "description": "Delete a wishlist item",
+        "operationId": "delete-wishlist-item",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {},
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "description": "wishlist item id to delete",
+            "example": "12"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Item Deleted"
+          },
+          "500": {
+            "description": "Bad Request - id cannot be blank",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "name": "BadRequest",
+                    "message": "Error: id cannot be blank",
+                    "statusCode": 500
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "v1/wishlist/create/item": {
