@@ -12,12 +12,12 @@ import { ProductResponse } from "../../../services/product/productServiceInterfa
 import { UseCase, UseCaseParams } from "../../../shared/contracts";
 import ExceptionHandler from "../../../shared/decorators/ExceptionHandler";
 import HttpResponse from "../../../shared/responses/HttpResponse";
-import { validateBody } from "./CreateWishlistItem.utils";
+import { validateBody } from "./utils/CreateWishlistItem.utils";
 
 import {
   CreateWishlistItemBody,
   CreateWishlistItemResponse,
-} from "./CreateWishlistItemInterface";
+} from "./interface/CreateWishlistItemInterface";
 
 @injectable()
 export default class CreateWishlistItemCase implements UseCase {

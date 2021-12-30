@@ -11,7 +11,7 @@ import { GenericUseCase } from "../../../shared/contracts";
 import ExceptionHandler from "../../../shared/decorators/ExceptionHandler";
 import GenericException from "../../../shared/exceptions/GenericException";
 import HttpResponse from "../../../shared/responses/HttpResponse";
-import { DeleteCustomerResponse } from "./DeleteCustomerInterface";
+import { DeleteCustomerResponse } from "./interface/DeleteCustomerInterface";
 
 @injectable()
 export default class DeleteCustomerCase implements GenericUseCase {

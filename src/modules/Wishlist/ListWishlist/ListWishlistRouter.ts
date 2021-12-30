@@ -2,7 +2,7 @@ import { inject, injectable } from "inversify";
 import { IHttpRequest, RequestRouter } from "../../../shared/contracts";
 
 import ListWishlistCase from "./ListWishlistCase";
-import { ListWishlistQuery } from "./ListWishlistInterface";
+import { ListWishlistQuery } from "./interface/ListWishlistInterface";
 
 @injectable()
 export default class ListWishlistRouter implements RequestRouter {

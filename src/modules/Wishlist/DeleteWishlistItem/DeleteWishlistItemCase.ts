@@ -11,7 +11,7 @@ import { GenericUseCase } from "../../../shared/contracts";
 import ExceptionHandler from "../../../shared/decorators/ExceptionHandler";
 import GenericException from "../../../shared/exceptions/GenericException";
 import HttpResponse from "../../../shared/responses/HttpResponse";
-import { DeleteWishlistItemResponse } from "./DeleteWishlistItemInterface";
+import { DeleteWishlistItemResponse } from "./interface/DeleteWishlistItemInterface";
 
 @injectable()
 export default class DeleteWishlistItemCase implements GenericUseCase {

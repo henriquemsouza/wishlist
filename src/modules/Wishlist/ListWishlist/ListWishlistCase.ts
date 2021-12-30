@@ -1,6 +1,5 @@
 import { OK } from "http-status";
 import { injectable } from "inversify";
-import CustomerEntity from "../../../infra/db/entities/CustomerEntity";
 import {
   createDBConnection,
   getTypeORMConnection,
@@ -11,7 +10,7 @@ import GenericException from "../../../shared/exceptions/GenericException";
 import HttpResponse from "../../../shared/responses/HttpResponse";
 
 import { SelectQueryBuilder } from "typeorm";
-import { Item, ListWishlistResponse } from "./ListWishlistInterface";
+import { Item, ListWishlistResponse } from "./interface/ListWishlistInterface";
 import WishlistEntity from "../../../infra/db/entities/WishlistEntity";
 import WishlistItemEntity from "../../../infra/db/entities/WishlistItemEntity";
 

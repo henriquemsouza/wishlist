@@ -17,7 +17,7 @@ import HttpResponse from "../../../shared/responses/HttpResponse";
 import {
   CreateCustomerBody,
   CreateCustomerResponse,
-} from "./CreateCustomerInterface";
+} from "./interface/CreateCustomerInterface";
 
 @injectable()
 export default class CreateCustomerCase implements UseCase {

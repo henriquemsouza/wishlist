@@ -2,7 +2,7 @@ import { inject, injectable } from "inversify";
 import { IHttpRequest, RequestRouter } from "../../../shared/contracts";
 
 import DeleteWishlistItemCase from "./DeleteWishlistItemCase";
-import { DeleteWishlistItemQuery } from "./DeleteWishlistItemInterface";
+import { DeleteWishlistItemQuery } from "./interface/DeleteWishlistItemInterface";
 
 @injectable()
 export default class DeleteWishlistItemRouter implements RequestRouter {

@@ -1,9 +1,7 @@
 import { inject, injectable } from "inversify";
 import { IHttpRequest, RequestRouter } from "../../../shared/contracts";
 import DeleteCustomerCase from "./DeleteCustomerCase";
-import {  DeleteCustomerQuery } from "./DeleteCustomerInterface";
-
-
+import { DeleteCustomerQuery } from "./interface/DeleteCustomerInterface";
 
 @injectable()
 export default class DeleteCustomerRouter implements RequestRouter {

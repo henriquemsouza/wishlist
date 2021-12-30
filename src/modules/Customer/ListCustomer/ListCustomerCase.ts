@@ -9,7 +9,7 @@ import { GenericUseCase } from "../../../shared/contracts";
 import ExceptionHandler from "../../../shared/decorators/ExceptionHandler";
 import GenericException from "../../../shared/exceptions/GenericException";
 import HttpResponse from "../../../shared/responses/HttpResponse";
-import { ListCustomerResponse } from "./ListInterface";
+import { ListCustomerResponse } from "./interface/ListInterface";
 import { SelectQueryBuilder } from "typeorm";
 
 @injectable()
