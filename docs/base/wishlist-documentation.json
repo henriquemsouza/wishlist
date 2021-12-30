@@ -1,0 +1,397 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "description": "Just a little reference about existing endpoints",
+    "version": "1.0.1",
+    "title": "WISHLIST BASIC DOC"
+  },
+  "servers": [
+    {
+      "description": "undefined"
+    }
+  ],
+  "paths": {
+    "/v1/customer/create": {
+      "post": {
+        "tags": ["Customer"],
+        "summary": "Create a new customer",
+        "description": "Create new Customer based on informed body",
+        "operationId": "create-customer",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {
+          "required": true,
+          "description": "Customer object to create a new Customer",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "email"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Name lorem name"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "example@email.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Customer Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "name": "Name lorem name",
+                    "email": "example@email.com",
+                    "id": 13,
+                    "createdAt": "2021-12-30T11:40:49.873Z",
+                    "updatedAt": "2021-12-30T11:40:49.873Z"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Bad Request - e-mail informed has already been used",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "name": "BadRequest",
+                    "message": "QueryFailedError: duplicate key value violates unique constraint",
+                    "statusCode": 500
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1/customer/update ": {
+      "patch": {
+        "tags": ["Update Customer"],
+        "summary": "Update a customer",
+        "description": "Update Customer based on informed body",
+        "operationId": "update-customer",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {
+          "required": true,
+          "description": "Customer object to update a Customer",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "email"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "UPDATE NAME"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "email_update@email.com"
+                  },
+                  "id": {
+                    "type": "number",
+                    "example": "12"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Customer Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "id": 12,
+                    "name": "UPDATE NAME",
+                    "email": "email_update@email.com",
+                    "createdAt": "2021-12-29T23:25:39.893Z",
+                    "updatedAt": "2021-12-30T11:50:08.076Z"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Bad Request - No Customer were found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "name": "BadRequest",
+                    "message": "Error: No Customer were found",
+                    "statusCode": 500
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1/customer/delete ": {
+      "delete": {
+        "tags": ["Delete Customer"],
+        "summary": "Delete a customer",
+        "description": "Delete a customer",
+        "operationId": "delete-customer",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {},
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "description": "customer id to delete",
+            "example": "12"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer Deleted"
+          },
+          "500": {
+            "description": "Bad Request - No Customer were found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "name": "BadRequest",
+                    "message": "Error: No Customer were found",
+                    "statusCode": 500
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1/customer/list": {
+      "get": {
+        "tags": ["List Customer"],
+        "summary": "List customers",
+        "description": "list a specific customer or all",
+        "operationId": "list-customer",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {},
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "description": "id of a specific customer",
+            "example": "6"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer Listed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "customers": [
+                      {
+                        "id": 6,
+                        "name": "name lorem",
+                        "email": "email@email.com",
+                        "createdAt": "2021-12-27T22:15:32.505Z",
+                        "updatedAt": "2021-12-27T22:15:32.533Z",
+                        "wishlist": {
+                          "id": 4,
+                          "createdAt": "2021-12-27T22:15:32.522Z",
+                          "updatedAt": "2021-12-27T22:15:32.522Z"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Bad Request - No Customer were found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "name": "BadRequest",
+                    "message": "Error: No Customer were found",
+                    "statusCode": 500
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1/wishlist/create": {
+      "post": {
+        "tags": ["Create wishlist"],
+        "summary": "Create wishlist"
+      }
+    },
+    "v1/wishlist/create/item": {
+      "post": {
+        "tags": ["Create wishlist item"],
+        "summary": "Create wishlist item",
+        "description": "Add a new item to wishlist",
+        "operationId": "create-wishlist-item",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {
+          "required": true,
+          "description": "Object to create a new wishlist item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["product_id", "customer_id"],
+                "properties": {
+                  "product_id": {
+                    "type": "string",
+                    "example": "1bf0f365-fbdd-4e21-9786-da459d78dd1f"
+                  },
+                  "customer_id": {
+                    "type": "number",
+                    "example": 6
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Item Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "id": 5,
+                    "price": 1699,
+                    "image": "http://challenge-api.luizalabs.com/images/1bf0f365-fbdd-4e21-9786-da459d78dd1f.jpg",
+                    "brand": "bébé confort",
+                    "product_id": "1bf0f365-fbdd-4e21-9786-da459d78dd1f",
+                    "title": "Cadeira para Auto Iseos Bébé Confort Earth Brown"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Bad Request - Product not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "name": "Error",
+                    "message": "Product 1bf0f365-f not found",
+                    "statusCode": 500,
+                    "extras": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1/wishlist/list": {
+      "get": {
+        "tags": ["List wishlist"],
+        "summary": "List wishlists",
+        "description": "list a specific wishlist",
+        "operationId": "list-wishlist",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {},
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "description": "id of a specific wishlist",
+            "example": "6"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Wishlist Listed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "id": 4,
+                    "customer_id": 6,
+                    "items": [
+                      {
+                        "title": "Farol Lado Esquerdo para Monza 88/90",
+                        "price": 160.69,
+                        "image": "http://challenge-api.luizalabs.com/images/77be5ad3-fa87-d8a0-9433-5dbcc3152fac.jpg",
+                        "product_id": "77be5ad3-fa87-d8a0-9433-5dbcc3152fac"
+                      },
+                      {
+                        "title": "Cadeira para Auto Iseos Bébé Confort Earth Brown",
+                        "price": 1699,
+                        "image": "http://challenge-api.luizalabs.com/images/1bf0f365-fbdd-4e21-9786-da459d78dd1f.jpg",
+                        "product_id": "1bf0f365-fbdd-4e21-9786-da459d78dd1f"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Bad Request - customer id cannot be blank",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "name": "Error",
+                    "message": "customer_id cannot be blank",
+                    "statusCode": 500,
+                    "extras": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

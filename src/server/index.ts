@@ -1,5 +1,5 @@
-import * as cors from 'cors';
-import * as express from 'express';
+import cors from 'cors';
+import express from 'express';
 import { eventContext } from 'aws-serverless-express/middleware';
 import ExpressRouteNotFoundAdapter from '../shared/adapters/ExpressRouteNotFoundAdapter';
 import Routes from '../modules/Routes';
